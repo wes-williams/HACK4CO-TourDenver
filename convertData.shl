@@ -1,0 +1,31 @@
+mkdir data/geo
+
+unzip -d data data/b_cycle_stations.kmz
+mv data/doc.kml data/b_cycle_stations.kml
+./node_modules/.bin/togeojson data/b_cycle_stations.kml > data/geo/b_cycle_stations.json
+
+unzip -d data data/bike_racks.kmz
+mv data/doc.kml data/bike_racks.kml
+./node_modules/.bin/togeojson data/bike_racks.kml > data/geo/bike_racks.json
+
+#unzip -d data data/park_trails.kmz
+#mv data/doc.kml data/park_trails.kml
+#./node_modules/.bin/togeojson data/park_trails.kml > data/geo/park_trails.json
+
+#unzip -d data data/parks.kmz
+#mv data/doc.kml data/parks.kml
+#./node_modules/.bin/togeojson data/parks.kml > data/geo/parks.json
+
+unzip -d data data/points_of_interest.kmz
+mv data/doc.kml data/points_of_interest.kml
+./node_modules/.bin/togeojson data/points_of_interest.kml > data/geo/points_of_interest.json
+
+unzip -d data data/public_art.kmz
+mv data/doc.kml data/public_art.kml
+./node_modules/.bin/togeojson data/public_art.kml > data/geo/public_art.json
+
+rm data/*png
+
+# don't forget to move the data/geo folder to public/data/geo
+# first you need to assign the data in each json file to the following: 
+#  pointsOfInterest, bCycleStations, bikeRacks, publicArt

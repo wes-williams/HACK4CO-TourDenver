@@ -1,0 +1,8 @@
+{
+  "name": "ServeStaticContent",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.x",
+    "togeojson": "~0.1.1"
+  }
+}

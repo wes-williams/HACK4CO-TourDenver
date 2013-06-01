@@ -1,0 +1,43 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#map, .map-div {
+  height: 480px;
+  width : 600px;
+}
+
+#bounds-div {
+  width: 870px;
+  height: 650px;
+  margin: 0 auto;
+}
+
+#popup-div {
+  height: 300px;
+  width : 300px;
+}
+
+#footnote-div {
+ font-size: 14pt;
+ font-weight: bold;
+}
+
+#video-div {
+  height: 200px;
+  width : 300px;
+}
+
+#wiki-div {
+  text-align:justify;
+}
+
+.mapLegend { 
+  color:white; 
+  font-weight:bold; 
+  font-size:14pt; 
+  padding:5px; 
+  align:center;  
+}
+

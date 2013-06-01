@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<title>Tour Denver</title>
+<link rel="stylesheet" href="lib/leaflet/leaflet.css" />
+<link rel="stylesheet" href="lib/tour_denver.css" />
+<script src="lib/leaflet/leaflet.js"></script>
+<script src="lib/popcorn/popcorn-complete.js"></script>
+<script src="lib/tour_denver.js"></script>
+<script>
+ // define data
+ var pointsOfInterest = {};  
+ var bCycleStations = {};
+ var bikeRacks = {};
+ var publicArt = {};
+ // load data
+</script>
+<script src="data/geo/points_of_interest.json"></script>
+<script src="data/geo/b_cycle_stations.json"></script>
+<script src="data/geo/bike_racks.json"></script>
+<script src="data/geo/public_art.json"></script>
+<script>
+ var tourDenver = tourDenver();
+function ready() {
+ // show data
+ tourDenver.loadMap();
+ tourDenver.addDataToMap(bCycleStations,{color:'green', type:'B-Cycle'});
+ tourDenver.addDataToMap(bikeRacks,{color:'red', type:'Bike Rack'});
+ tourDenver.addDataToMap(publicArt,{color:'purple', type:'Public Art'});
+ tourDenver.addDataToMap(pointsOfInterest,{color:'blue', type:'Attraction'});
+ tourDenver.playVideo();
+}
+</script>
+</head>
+<body onLoad="ready()">
+ <br />
+ <div id="bounds-div">
+  <div class="map-div" style="float:left">
+   <div id="map" style="float:left"></div>
+   <div align="center">
+    <span class="mapLegend" style="background-color:black">Me</span>
+    <span class="mapLegend" style="background-color:green">B-Cycles</span>
+    <span class="mapLegend" style="background-color:red;">Bike Racks</span>
+    <span class="mapLegend" style="background-color:purple">Public Art</span>
+<span class="mapLegend" style="background-color:blue">Attractions</span>
+   </div>
+  </div>
+  <div id="footnote-div"></div>
+  <div id="twitter-div" style="float:left;padding-left:20px"></div> 
+  <div id="flickr-div" style="float:left;padding-left:20px"></div> 
+  <div id="wiki-div" style="float:right; padding:30px"></div>
+  <!--
+    <div id="googlemap-div" style="width:300px;height:200px;"></div>
+    <div id="openmap-div" style="width:300px;height:200px;"></div>
+  -->
+ </div>
+</body>
+</html>
