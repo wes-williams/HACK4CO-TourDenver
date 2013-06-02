@@ -1,7 +1,7 @@
-function tourDenver() {
+function tourDenver(videoTimelines) {
 
 var that = this;
-
+var videos = videoTimelines
 var map;
 
 var loadMap = function() {
@@ -57,7 +57,11 @@ var addDataToMap = function(data,options) {
 	        document.getElementById('twitter-div').innerHTML = "";
 	        document.getElementById('flickr-div').innerHTML = "";
 	        document.getElementById('wiki-div').innerHTML = "";
-		that.playVideo();
+
+		var video = videoTimelines[options.type+':'+featureName];
+		if(video) {
+		  that.playVideo(video);
+		}
 	      };
 	      layer.on('click', onLayerClick); 
             },
@@ -72,39 +76,61 @@ var addDataToMap = function(data,options) {
 };
 that.addDataToMap = addDataToMap;
 
-var playVideo = function(video) {
-  var pop = Popcorn.youtube( "#video-div", "http://www.youtube.com/watch?v=P258mrXtGEM");
-  pop.footnote({
-                start: 1,
-                //end: 20,
-                text: "Welcome To Denver!",
+var playVideo = function(videoData) {
+
+  if(!videoData || !videoData.video) {
+    return;
+  }
+
+  var pop = Popcorn.youtube( "#video-div", videoData.video);
+
+  for(var i=0;i<videoData.timelines.length;i++) {
+    var timeline = videoData.timelines[i];
+    
+
+    if(timeline.description) {
+      pop.footnote({
+                start: timeline.startTime,
+                end: timeline.endTime,
+                text: timeline.description,
                 target: "footnote-div"
                });
+    }
 
-  pop.twitter({
-               start: 2,
-               //end: 20,
-               title: "Hack4CO",
-               src: "@visitdenver",
+    if(timeline.twitter) { 
+      pop.twitter({
+               start: timeline.startTime,
+               end: timeline.endTime,
+               title: "Twitter",
+               src: timeline.twitter,
                target: "twitter-div",
               });
+    }
 
-  pop.flickr({
-              start: 2,
+    if(timeline.keywords) {
+      pop.flickr({
+              start: timeline.startTime,
+              end: timeline.endTime,
 	      numberofimages:4,
-	      username: "cityandcountydenver",
-	      tags: " capitol",
+	      username: "cityandcountydenver", // using this?
+	      tags: timeline.keywords,
               target: "flickr-div"
             });
+    }
 
-  pop.wikipedia({
-                 start: 2,
-                 //end: 20,
-                 src: "http://en.wikipedia.org/wiki/Denver",
+
+    if(timeline.wiki) { 
+      pop.wikipedia({
+                 start: timeline.startTime,
+                 end: timeline.endTime,
+                 src: timeline.wiki,
                  title: "Wikipedia.com says:",
                  target: "wiki-div",
 		 numberofwords: 100
-     });
+             });
+     }
+  }
+
 /*
   pop.image({
              start: 5,

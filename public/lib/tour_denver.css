@@ -9,9 +9,18 @@ body {
 }
 
 #bounds-div {
-  width: 870px;
-  height: 650px;
+  width: 880px;
+  height: 690px;
   margin: 0 auto;
+  border:1px dotted #000000;
+}
+
+#right-div {
+  height: 480px;
+  border-bottom:1px dotted #000000;
+}
+
+#bottom-div {
 }
 
 #popup-div {
