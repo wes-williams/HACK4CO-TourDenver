@@ -47,10 +47,17 @@ var addDataToMap = function(data,options) {
             },
             onEachFeature: function (feature, layer) {
               var featureName = feature.properties.name;
-              layer.bindPopup('<div class="popup-div">' + 
+   	      var video = videoTimelines[options.type+':'+featureName];
+
+	      if(video) {
+                layer.bindPopup('<div class="popup-div">' + 
 	                      options.type +': ' + featureName + 
 	                      '<br /><div id="video-div"></div>' +
 	                      '</div>'); 
+	      }
+	      else {
+                layer.bindPopup(options.type +': ' + featureName); 
+	      }
 
 	      var onLayerClick = function() {
 	        document.getElementById('footnote-div').innerHTML = "";
@@ -58,7 +65,6 @@ var addDataToMap = function(data,options) {
 	        document.getElementById('flickr-div').innerHTML = "";
 	        document.getElementById('wiki-div').innerHTML = "";
 
-		var video = videoTimelines[options.type+':'+featureName];
 		if(video) {
 		  that.playVideo(video);
 		}
