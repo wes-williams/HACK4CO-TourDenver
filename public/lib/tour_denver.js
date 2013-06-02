@@ -11,23 +11,36 @@ var loadMap = function() {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  //map.locate({setView:true});
-  var latlng = [39.739094,-104.984898];
-  map.setView(latlng,16);
-  L.circleMarker(latlng,{
-    radius: 5,
-    fillColor: 'black',
-    color: 'black',
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.8
-  }).addTo(map);
+  var showLocation = function(latlng) {
+    map.setView(latlng,16);
+    L.circleMarker(latlng,{
+      radius: 5,
+      fillColor: 'black',
+      color: 'black',
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.8
+    }).addTo(map);
+  };
 
-  /*
-  map.on('click', function(e) {
-      alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
-      });
-  */
+  map.on('locationerror', function(e) {
+      var latlng = [39.739094,-104.984898]; // state capitol
+      showLocation(latlng);
+
+  });
+  map.locate({setView:true}).whenReady(function() {
+    var latlng = map.getCenter();
+    if(latlng && latlng!=undefined) { 
+      latlng = [latlng.lat,latlng.lng];
+    }
+    else {
+      latlng = [0,0];
+    }
+
+    if(latlng[0]>20) { // otherwise it failed 
+      showLocation(latlng);
+    }
+  });
 };
 that.loadMap = loadMap;
 
