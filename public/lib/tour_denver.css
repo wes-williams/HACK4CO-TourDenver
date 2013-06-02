@@ -4,19 +4,19 @@ body {
 }
 
 #map, .map-div {
-  height: 480px;
-  width : 600px;
+  height: 440px;
+  width : 550px;
 }
 
 #bounds-div {
   width: 920px;
-  height: 670px;
+  height: 650px;
   margin: 0 auto;
   border:1px dotted #000000;
 }
 
 #right-div {
-  height: 480px;
+  height: 440px;
   border-bottom:1px dotted #000000;
 }
 
