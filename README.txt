@@ -21,3 +21,33 @@ Libaries used:
 http://popcornjs.org/
 https://github.com/tmcw/togeojson
 http://leafletjs.com/
+
+Example Video Timeline Transcription:
+
+{
+  "Attraction:State Capitol" :
+  {
+    "video" : "http://www.youtube.com/watch?v=XXXXXXXX",
+    "timelines" :
+    [
+      {
+        startTime: 0,
+        endTime: 19,
+        description: "Colorado State Capitol",
+        wiki: "http://en.wikipedia.org/wiki/Colorado_State_Capitol",
+        twitter: "@coloradogov",
+        keywords: "colorado capitol",
+
+      },
+      {
+        startTime: 20,
+        endTime: 38,
+        description: "Colfax Avenue",
+        wiki: "http://en.wikipedia.org/wiki/Colfax_Avenue",
+        twitter: "#colfaxmarathon",
+        keywords: "colfax marathon",
+
+      }
+    ]
+  }
+}
