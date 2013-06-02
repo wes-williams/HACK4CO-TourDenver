@@ -130,41 +130,6 @@ var playVideo = function(videoData) {
              });
      }
   }
-
-/*
-  pop.image({
-             start: 5,
-             href: "some.url",
-             src: "image.jpg",
-             text: "Denver, CO",
-             target: "image-div"
-            });
-
-  pop.googlemap({
-     		 start: 5,
-		 end: 20,
-		 target: "googlemap-div",
-		 location: "Denver, CO",
-		 zoom: 10
-	        });
-
-  pop.openmap({
-               start: 10,
-               end: 13,
-               type: "ROADMAP",
-               target: "openmap-div",
-               lat: 39.73925,
-               lng: -104.98619,
-               zoom: "10"
-             });
-
-  pop.subtitle({
-                start: 3,
-                end: 7,
-                text: "this is the first subtitle",
-               });
-*/
-
   
   pop.play();
 };
